@@ -1,113 +1,126 @@
+-- create database
 DROP DATABASE IF EXISTS Testing_System_Assignment_1;
-CREATE DATABASE Testing_System_Assignment_1;
+CREATE DATABASE IF NOT EXISTS Testing_System_Assignment_1;
 USE Testing_System_Assignment_1;
 
 
-#Table1: Department
-DROP TABLE IF EXISTS Department ;
-CREATE TABLE Department (
-	Department_ID			INT,
-    Department_Name			VARCHAR(50)
+--  create table1: Department
+DROP TABLE IF EXISTS department;
+CREATE TABLE IF NOT EXISTS department (
+	department_id			TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    department_name			NVARCHAR(100)
 );
 
 
-#Table2: Position
-DROP TABLE IF EXISTS Position;
-CREATE TABLE Position (
-	Position_id			INT,
-    Position_name		VARCHAR(50)
+-- create table2: Position
+DROP TABLE IF EXISTS position;
+CREATE TABLE IF NOT EXISTS position (
+	position_id			TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    position_name		ENUM('Dev','Test','Scrum Master','PM')
 );
 
 
-#Table3: Account
-DROP TABLE IF EXISTS `Account`;
-CREATE TABLE `Account` (
-	Account_id			INT,
-    Email				VARCHAR(50),
-    Username			VARCHAR(50),
-    Full_name			VARCHAR(50),
-    Department_id		INT,
-    Position_id			INT,
-    Create_date			DATE
+-- create table3: Account
+DROP TABLE IF EXISTS `account`;
+CREATE TABLE IF NOT EXISTS `account` (
+	account_id			SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    email				VARCHAR(100) UNIQUE KEY NOT NULL,
+    username			VARCHAR(50),
+    full_name			NVARCHAR(200),
+    department_id		TINYINT UNSIGNED NOT NULL,
+    position_id			TINYINT UNSIGNED NOT NULL,
+    create_date			DATE,
+    FOREIGN KEY (department_id) REFERENCES department (department_id),
+    FOREIGN KEY (position_id) REFERENCES position (position_id)
 );
 
 
 
-#Table4: Group
-DROP TABLE IF EXISTS `Group`;
-CREATE TABLE `Group` (
-	Group_id			INT,
-    Group_name			VARCHAR(50),
-    Creator_id			INT,
-    Create_date			DATE
+-- create table4: Group
+DROP TABLE IF EXISTS `group`;
+CREATE TABLE IF NOT EXISTS `group` (
+	group_id			TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    group_name			NVARCHAR(200),
+    creator_id			TINYINT UNSIGNED,
+    create_date			DATE
 );
 	
  
- #Table5: GroupAccount
-DROP TABLE IF EXISTS `GroupAccount`;
-CREATE TABLE `GroupAccount` (
-	Group_id			INT,
-    Account_id			INT,
-    Join_date			DATE
+ -- create table5: GroupAccount
+DROP TABLE IF EXISTS `group_account`;
+CREATE TABLE IF NOT EXISTS `group_account` (
+	group_id			TINYINT UNSIGNED,
+    account_id			SMALLINT UNSIGNED,
+    join_date			DATE,
+    PRIMARY KEY (group_id,account_id),
+    FOREIGN KEY (group_id) REFERENCES `group` (group_id),
+    FOREIGN KEY (account_id) REFERENCES `account` (account_id)
 );
 
 
-#Table6: TypeQuestion
-DROP TABLE IF EXISTS TypeQuestion;
-CREATE TABLE TypeQuestion (
-	Type_id			INT,
-    Type_name		VARCHAR(50)
+-- create table6: TypeQuestion
+DROP TABLE IF EXISTS type_question;
+CREATE TABLE IF NOT EXISTS type_question (
+	type_id			TINYINT UNSIGNED AUTO_INCREMENT,
+    type_name		ENUM('Essay','Multi-choice'),
+    PRIMARY KEY(type_id,type_name)
 );
 
 
-#Table7: CategoryQuestion
-DROP TABLE IF EXISTS CategoryQuestion;
-CREATE TABLE CategoryQuestion (
-	Category_id			INT,
-    Category_name		VARCHAR(50)
+-- create table7: CategoryQuestion
+DROP TABLE IF EXISTS category_question;
+CREATE TABLE IF NOT EXISTS category_question (
+	category_id			TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    category_name		NVARCHAR(200)
 );
 
 
-#Table8: Question
-DROP TABLE IF EXISTS Question;
-CREATE TABLE Question (
-	Question_id			INT,
-    Content				VARCHAR(100),
-    Category_id			INT,
-    Type_id				INT,
-    Creator_id			INT,
-    Create_date			DATE
+-- create table8: Question
+DROP TABLE IF EXISTS question;
+CREATE TABLE IF NOT EXISTS question (
+	question_id			SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    content				TEXT,
+    category_id			TINYINT UNSIGNED,
+    FOREIGN KEY (category_id) REFERENCES category_question (category_id),
+    type_id				TINYINT UNSIGNED,
+    FOREIGN KEY (type_id) REFERENCES type_question (type_id),
+    creator_id			TINYINT UNSIGNED,
+    create_date			DATE
 );
 
 
-#Table9: Answer
-DROP TABLE IF EXISTS Answer;
-CREATE TABLE Answer (
-	Answer_id		INT,
-    Content			VARCHAR(200),
-    Question_id		INT,
-    is_correct		VARCHAR(50)
+-- create table9: Answer
+DROP TABLE IF EXISTS answer;
+CREATE TABLE IF NOT EXISTS answer (
+	answer_id		SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    content			TEXT(200),
+    question_id		SMALLINT UNSIGNED,
+    FOREIGN KEY (question_id) REFERENCES question (question_id),
+    is_correct		ENUM('TRUE','FALSE')
 );
 
 
-#Table10: Exam
-DROP TABLE IF EXISTS Exam;
-CREATE TABLE Exam (
-	Exam_id			INT,
-    `Code`	VARCHAR(20),
-    Title			VARCHAR(20),
-    Category_id		INT,
-    Duration		VARCHAR(50),
-    Creator_id		INT,
-    Create_date		DATE
+-- create table10: Exam 
+DROP TABLE IF EXISTS exam;
+CREATE TABLE IF NOT EXISTS exam (
+	exam_id			SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    `code`			VARCHAR(50),
+    title			TEXT,
+    category_id		TINYINT UNSIGNED,
+    duration		VARCHAR(200),
+    creator_id		TINYINT UNSIGNED,
+    create_date		DATE
 );
 
 
-#Table11: ExamQuestion
-DROP TABLE IF EXISTS ExamQuestion;
-CREATE TABLE ExamQuestion (
-	Exam_id			INT,
-    Question_id		INT
+--  create table11: ExamQuestion
+DROP TABLE IF EXISTS exam_question;
+CREATE TABLE IF NOT EXISTS exam_question (
+	exam_id			SMALLINT UNSIGNED,
+    question_id		SMALLINT UNSIGNED,
+    PRIMARY KEY (exam_id,question_id),
+    FOREIGN KEY (exam_id) REFERENCES exam (exam_id),
+    FOREIGN KEY (question_id) REFERENCES question (question_id)
 );
 
 
