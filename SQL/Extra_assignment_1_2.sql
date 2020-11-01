@@ -26,8 +26,18 @@ CREATE TABLE IF NOT EXISTS trainee(
 -- exercise 2
 DROP TABLE IF EXISTS exercise_2;
 CREATE TABLE IF NOT EXISTS exercise_2(
-		id				SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+		id				MEDIUMINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
         `name`			VARCHAR(50),
         `code`			CHAR(5),
-        modified_date	DATETIME
+        modified_date	DATETIME DEFAULT NOW()
+);
+
+
+-- exercise 3
+DROP TABLE IF EXISTS exercise_3;
+CREATE TABLE IF NOT EXISTS exercise_3(
+		id				MEDIUMINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+        bith_date		VARCHAR(50),
+		gender			BIT,
+		Is_delete_flag	BIT NOT NULL -- or ENUM('0','1')
 );

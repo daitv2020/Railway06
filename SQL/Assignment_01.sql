@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `account`;
 CREATE TABLE IF NOT EXISTS `account` (
 	account_id			SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     email				VARCHAR(100) UNIQUE KEY NOT NULL,
-    username			VARCHAR(50),
+    username			VARCHAR(50) NOT NULL,
     full_name			NVARCHAR(200),
     department_id		TINYINT UNSIGNED NOT NULL,
     position_id			TINYINT UNSIGNED NOT NULL,
@@ -41,8 +41,9 @@ DROP TABLE IF EXISTS `group`;
 CREATE TABLE IF NOT EXISTS `group` (
 	group_id			TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     group_name			NVARCHAR(200),
-    creator_id			TINYINT UNSIGNED,
-    create_date			DATE
+    creator_id			SMALLINT UNSIGNED NOT NULL,
+    create_date			DATE,
+    FOREIGN KEY (creator_id) REFERENCES `account` (account_id)
 );
 	
  
@@ -63,7 +64,7 @@ DROP TABLE IF EXISTS type_question;
 CREATE TABLE IF NOT EXISTS type_question (
 	type_id			TINYINT UNSIGNED AUTO_INCREMENT,
     type_name		ENUM('Essay','Multi-choice'),
-    PRIMARY KEY(type_id,type_name)
+    PRIMARY KEY(type_id)
 );
 
 
@@ -81,11 +82,15 @@ CREATE TABLE IF NOT EXISTS question (
 	question_id			SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     content				TEXT,
     category_id			TINYINT UNSIGNED,
-    FOREIGN KEY (category_id) REFERENCES category_question (category_id),
     type_id				TINYINT UNSIGNED,
-    FOREIGN KEY (type_id) REFERENCES type_question (type_id),
-    creator_id			TINYINT UNSIGNED,
-    create_date			DATE
+    creator_id			SMALLINT UNSIGNED,
+    create_date			DATE,
+	FOREIGN KEY (category_id) 
+		REFERENCES category_question (category_id),
+	FOREIGN KEY (type_id) 
+		REFERENCES type_question (type_id),
+	FOREIGN KEY (creator_id) 
+		REFERENCES `account` (account_id)
 );
 
 
@@ -95,7 +100,8 @@ CREATE TABLE IF NOT EXISTS answer (
 	answer_id		SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     content			TEXT(200),
     question_id		SMALLINT UNSIGNED,
-    FOREIGN KEY (question_id) REFERENCES question (question_id),
+    FOREIGN KEY (question_id)
+		REFERENCES question (question_id),
     is_correct		ENUM('TRUE','FALSE')
 );
 
@@ -108,8 +114,9 @@ CREATE TABLE IF NOT EXISTS exam (
     title			TEXT,
     category_id		TINYINT UNSIGNED,
     duration		VARCHAR(200),
-    creator_id		TINYINT UNSIGNED,
-    create_date		DATE
+    creator_id		SMALLINT UNSIGNED,
+    create_date		DATE,
+    FOREIGN KEY (creator_id) REFERENCES `account`(account_id)
 );
 
 
@@ -119,8 +126,10 @@ CREATE TABLE IF NOT EXISTS exam_question (
 	exam_id			SMALLINT UNSIGNED,
     question_id		SMALLINT UNSIGNED,
     PRIMARY KEY (exam_id,question_id),
-    FOREIGN KEY (exam_id) REFERENCES exam (exam_id),
-    FOREIGN KEY (question_id) REFERENCES question (question_id)
+    FOREIGN KEY (exam_id) 
+		REFERENCES exam (exam_id),
+    FOREIGN KEY (question_id) 
+		REFERENCES question (question_id)
 );
 
 
