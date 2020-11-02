@@ -8,7 +8,7 @@ USE Testing_System_Assignment_1;
 DROP TABLE IF EXISTS department;
 CREATE TABLE IF NOT EXISTS department (
 	department_id			TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-    department_name			NVARCHAR(100)
+    department_name			NVARCHAR(100) UNIQUE KEY
 );
 
 
