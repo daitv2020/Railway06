@@ -167,7 +167,7 @@ VALUES				 ('tuvandai1996@gmail.com'		, 'tuvandai'			, 'Tu Van Dai'			, 1				, 2
                      ('mongco@gmail.com'			, 'mongco'				, 'Mong Co'				, 6				, 2				, '2020-10-10'),
                      ('nga@gmail.com'				, 'nga'					, 'Lien Bang Nga'		, 7				, 1				, '2019-01-10'),
                      ('lao@gmail.com'				, 'lao'					, 'CHDCND Lao'			, 8				, 3				, '2019-12-11'),
-                     ('campuchia@gmail.com'			, 'campuchi'			, 'Vuong Quoc Campuchia', 9				, 3				, '2019-11-10');
+                     ('campuchia@gmail.com'			, 'campuchi'			, 'Vuong Quoc Campuchia', 3				, 3				, '2019-11-10');
                      
 
 -- Add data table group
@@ -238,12 +238,12 @@ VALUES				('content 1'	, 2					, 'FALSE'		),
 					('content 2'	, 1					, 'TRUE'		),
                     ('content 9'	, 3					, 'FALSE'		),
                     ('content 8'	, 4 				, 'TRUE'		),
-                    ('content 7'	, 5					, 'TRUE'		),
+                    ('content 7'	, 1					, 'TRUE'		),
                     ('content 6'	, 6					, 'FALSE'		),
-                    ('content 5'	, 7					, 'TRUE'		),
+                    ('content 5'	, 1					, 'TRUE'		),
                     ('content 4'	, 8					, 'TRUE'		),
                     ('content 3'	, 10				, 'TRUE'		),
-                    ('content a'	, 9					, 'TRUE'		)
+                    ('content a'	, 1					, 'TRUE'		)
 ;
 
 
@@ -284,15 +284,44 @@ SELECT *
 FROM department
 WHERE department_name = 'sale';
 
+-- Q4. Lấy thông tin account có fullName dài nhất
+SELECT *,length(full_name)
+FROM `account`
+WHERE length(full_name) = (
+SELECT MAX(length(full_name))
+FROM `account`
+);
+-- Q5. Lấy ra thông tin account có full name dài nhất và thuộc phòng ban có id = 3
+SELECT *,length(full_name)
+FROM `account`
+WHERE length(full_name) = (
+			SELECT MAX(length(full_name))
+			FROM `account`)
+			And department_id =3
+;
+
 -- Q6. Lấy tên group đã tham gia trước ngày 20/12/2019
 SELECT group_name
 FROM `group`
 WHERE create_date < '2019-12-20';
 
+-- Q7. Lấy ra ID của question có >= 4 câu trả lời
+SELECT *, COUNT(*)
+FROM question q
+JOIN answer a ON a.question_id = q.question_id
+GROUP BY (a.question_id)
+HAVING COUNT(*) >= 4;
+
 -- Q8. Lấy các mã đề thi có thời gian thi >= 60 phút và được tạo trước ngày 20/12/2019
 SELECT *
 FROM exam
 WHERE duration >= 60 AND create_date <= '2019-12-20';
+
+-- Q9. Lấy ra 5 group được tạo gần đây nhất
+SELECT *
+FROM `group`
+ORDER BY create_date DESC
+LIMIT 5;
 
 -- Q10. Đếm số nhân viên thuộc department có id = 2
 SELECT *, COUNT(*)
