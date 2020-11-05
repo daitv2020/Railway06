@@ -305,9 +305,14 @@ HAVING COUNT(*) > 3;
 SELECT *, COUNT(*)
 FROM question q
 JOIN exam_question eq ON eq.question_id = q.question_id
-GROUP BY eq.question_id 
-ORDER BY COUNT(*) DESC
-LIMIT 1;
+GROUP BY eq.question_id
+HAVING COUNT(*) = (SELECT COUNT(*)
+					FROM exam_question
+                    GROUP BY question_id
+					ORDER BY COUNT(*) DESC
+					LIMIT 1)
+;
+
 
 -- Question 6 Thông kê mỗi category Question được sử dụng trong bao nhiêu Question
 SELECT cq.category_id, cq.category_name, q.question_id, q.content, COUNT(q.question_id) AS SoluongCauhoi
@@ -317,7 +322,7 @@ GROUP BY cq.category_id
 ;
 
 -- Question 7 Thông kê mỗi Question được sử dụng trong bao nhiêu Exam
-SELECT *, COUNT(eq.exam_id) AS soluongdethi
+SELECT *, COUNT(q.question_id) AS soluongdethi
 FROM question q
 LEFT JOIN exam_question eq ON eq.question_id = q.question_id
 GROUP BY q.question_id
@@ -344,39 +349,21 @@ SELECT *, COUNT(a.account_id) AS SoNguoi
 FROM position p
 JOIN `account` a ON a.position_id = p.position_id
 GROUP BY p.position_id 
-HAVING COUNT(a.account_id) = 2
+HAVING COUNT(a.account_id) = (
+	SELECT COUNT(account_id)
+	FROM `account`
+	GROUP BY position_id
+	ORDER BY COUNT(account_id)
+	LIMIT 1)
 ;
 
--- Question 11 Thống kê mỗi phòng ban có bao nhiêu dev, test, scrum master, PM
-SELECT d.department_name, p.position_name
+-- Question 11 Thống kê mỗi phòng ban có bao nhiêu nhân viên thuộc 1 trong 4 chức vụ dev, test, scrum master, PM 
+SELECT *, COUNT(p.position_id), GROUP_CONCAT(p.position_name)
 FROM `account` a
-RIGHT JOIN department d ON a.department_id = d.department_id
-LEFT JOIN position p ON a.position_id = p.position_id
-WHERE p.position_name = 'Dev'
-
-UNION
-
-SELECT d.department_name, p.position_name
-FROM `account` a
-RIGHT JOIN department d ON a.department_id = d.department_id
-LEFT JOIN position p ON a.position_id = p.position_id
-WHERE p.position_name = 'Test'
-
-UNION
-
-SELECT d.department_name, p.position_name
-FROM `account` a
-RIGHT JOIN department d ON a.department_id = d.department_id
-LEFT JOIN position p ON a.position_id = p.position_id
-WHERE p.position_name = 'Scrum Master'
-
-UNION
-
-SELECT d.department_name, p.position_name
-FROM `account` a
-RIGHT JOIN department d ON a.department_id = d.department_id
-LEFT JOIN position p ON a.position_id = p.position_id
-WHERE p.position_name = 'PM';
+JOIN position p ON a.position_id = p.position_id
+WHERE p.position_name IN ('Dev', 'Test', 'Scrum Master', 'PM')
+GROUP BY a.department_id
+;
 
 -- Question 12 Lấy thông tin chi tiết của câu hỏi bao gồm: 
 -- thông tin cơ bản của question, loại câu hỏi, ai là người tạo ra câu hỏi, câu trả lời là gì, ...
@@ -388,10 +375,10 @@ LEFT JOIN answer a ON q.question_id = a.question_id
 ;
 
 -- Question 13 Lấy ra số lượng câu hỏi của mỗi loại tự luận hay trắc nghiệm
-SELECT *, COUNT(q.question_id)
+SELECT *, COUNT(tq.type_id)
 FROM type_question tq
 LEFT JOIN question q ON q.type_id = tq.type_id
-GROUP BY tq.type_name
+GROUP BY tq.type_id
 ;
 
 -- Question 14, 15 Lấy ra group không có account nào

@@ -311,6 +311,11 @@ FROM question q
 JOIN answer a ON a.question_id = q.question_id
 GROUP BY (a.question_id)
 HAVING COUNT(*) >= 4;
+   -- Cách 2 ---
+SELECT question_id, COUNT(*)
+FROM answer
+GROUP BY question_id
+HAVING COUNT(*)>=4;
 
 -- Q8. Lấy các mã đề thi có thời gian thi >= 60 phút và được tạo trước ngày 20/12/2019
 SELECT *
@@ -325,7 +330,7 @@ LIMIT 5;
 
 -- Q10. Đếm số nhân viên thuộc department có id = 2
 SELECT *, COUNT(*)
-FROM department
+FROM `account`
 WHERE department_id = 2;
 
 -- Q11. Lấy ra nhân viên có tên bắt đầu bằng chữ "D" và kết thúc bằng chữ "o"
