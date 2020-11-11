@@ -288,6 +288,20 @@ WHERE department_id = (
 			FROM department
 			WHERE department_name = 'sale' );
 
+
+-- Cách tạo bằng CTE
+WITH question_1 AS(
+	SELECT *
+	FROM `account`
+	WHERE department_id = (
+				SELECT department_id 
+				FROM department
+				WHERE department_name = 'sale' )
+                )
+            
+SELECT * FROM question_1;
+
+
 -- Question 2: Tạo view có chứa thông tin các account tham gia vào nhiều group nhất
 CREATE OR REPLACE VIEW Question_2 AS
 SELECT account_id, COUNT(group_id), GROUP_CONCAT(group_id)
