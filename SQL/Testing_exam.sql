@@ -70,48 +70,43 @@ VALUES					(1				, 1			, 1			, 500			, '2010-10-12'	, '2010-11-12'	, 'address 2'
 SELECT c.customer_id,c.name, SUM(co.amount)
 FROM customer c
 LEFT JOIN car_order co ON c.customer_id = co.customer_id
-WHERE co.status = '1'
+WHERE co.status = '1' OR co.status = '0'
 GROUP BY co.customer_id
 ORDER BY SUM(co.amount);
        
 -- Question 3
-DROP FUNCTION IF EXISTS top_maker;
+DROP FUNCTION IF EXISTS Max_car_of_2020;
 DELIMITER $$
-CREATE FUNCTION top_maker  RETURNS VARCHAR(100)
+CREATE FUNCTION Max_car_of_2020() RETURNS VARCHAR(100)
 BEGIN
-DECLARE ten_hang VARCHAR(100);
-		DROP VIEW view1;
-		CREATE VIEW view1 AS
-		SELECT c.maker, SUM(ca.amount) AS so_luong
-		FROM car_order ca
-		JOIN car c ON ca.car_id = c.car_id
-		WHERE c.maker = 'TOYOTA'
-		UNION
-		SELECT c.maker, SUM(ca.amount) AS so_luong
-		FROM car_order ca
-		JOIN car c ON ca.car_id = c.car_id
-		WHERE c.maker = 'HONDA'
-		UNION
-		SELECT c.maker, SUM(ca.amount) AS so_luong
-		FROM car_order ca
-		JOIN car c ON ca.car_id = c.car_id
-		WHERE c.maker = 'NISSAN';
- SELECT  *
- FROM view1
- ORDER BY so_luong DESC
- LIMIT 1;
- RETURNS ten_hang;
-END $$
+ DECLARE ten_hang  VARCHAR(100);
+    DECLARE Car_ID_1  INT;
+    SELECT  Car_ID,Maker INTO Car_ID_1,ten_hang
+ FROM  car_order
+    JOIN car USING (Car_ID)
+    WHERE year(Order_Date) = 2020
+    GROUP BY Maker
+    ORDER BY SUM(Amount) DESC
+    LIMIT 1;
+    RETURN ten_hang;
+END$$
 DELIMITER ;
+SELECT Max_car_of_2020();
+SET GLOBAL log_bin_trust_function_creators = 1;
+
+
+
 					
                     
 -- Question 4
+DROP PROCEDURE IF EXISTS q_4;
 DELIMITER $$
 CREATE PROCEDURE q_4()
 BEGIN
 	DELETE
 	FROM car_order
-	WHERE `status` = 2;
+	WHERE `status` = '2' && YEAR(order_date) < YEAR(NOW());
+    SELECT ROW_COUNT();
 END $$
 DELIMITER ;
 
@@ -130,8 +125,10 @@ BEGIN
     GROUP BY ca.car_id ;
 END $$
 DELIMITER ;
+call testing_exam_1.q_5(2);
 
 -- Question 6
+DROP TRIGGER IF EXISTS q_6;
 DELIMITER $$
 CREATE TRIGGER q_6
 BEFORE INSERT ON car_order
