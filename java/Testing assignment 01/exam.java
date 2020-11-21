@@ -3,12 +3,12 @@ package Buoi1;
 import java.time.LocalDate;
 
 public class exam {
-	int exam_id;
+	int examId;
 	String code;
 	String title;
-	categoryQuestion category_id;
+	categoryQuestion categoryQuestion;
 	int duration;
-	account creator_id;
-	LocalDate create_date;
-	question[] question_in_exam;
+	account account;
+	LocalDate createDate;
+	question[] questions;
 }

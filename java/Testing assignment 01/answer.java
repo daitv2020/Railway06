@@ -1,9 +1,9 @@
 package Buoi1;
 
 public class answer {
-	int answer_id;
+	int answerId;
 	String content;
-	question question_id;
-	boolean is_correct;
+	question question;
+	boolean isCorrect;
 	
 }
