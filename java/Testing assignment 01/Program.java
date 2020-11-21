@@ -98,9 +98,7 @@ public class Program {
 		group01.groupName = "group 1";
 		group01.account = account03;
 		group01.createDate = LocalDate.of(2010, 12, 20);
-		
-		account[] accountOfGroup01= {account01, account02};
-		group01.accounts = accountOfGroup01;
+
 		
 		System.out.println(group01.groupName);
 		
@@ -111,8 +109,7 @@ public class Program {
 		group02.account = account02;
 		group02.createDate = LocalDate.of(2015, 11, 20);
 		
-		account[] accountOfGroup02= {account01, account03};
-		group02.accounts = accountOfGroup02;
+
 		
 		System.out.println(group02.createDate);
 		
@@ -123,8 +120,24 @@ public class Program {
 		group03.account = account01;
 		group03.createDate = LocalDate.of(2020, 11, 20);
 		
+		account[] accountOfGroup01= {account01, account02};
+		group01.accounts = accountOfGroup01;
+		
+		account[] accountOfGroup02= {account01, account03};
+		group02.accounts = accountOfGroup02;
+		
 		account[] accountOfGroup03= {account01, account02, account03};
 		group03.accounts = accountOfGroup03;
+		
+		group[] groupOfAccount01 = {group01, group02, group03};
+		account01.groups = groupOfAccount01;
+		
+		group[] groupOfAccount02 = {group01, group03};
+		account02.groups = groupOfAccount02;
+		
+		group[] groupOfAccount03 = {group01, group02};
+		account03.groups = groupOfAccount03;
+		
 		
 		System.out.println(group03.groupName);
 		
