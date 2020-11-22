@@ -313,6 +313,93 @@ public class Exercise1 {
 			}
 		}
 	
+//WHILE
+//		Question 16		
+		
+		System.out.println("\n");
+		System.out.println("Question 16.1");
+		
+		int b = 0;
+		
+		while (b<accounts.length) {
+			System.out.println("thong tin account thu " +( b +1));
+			System.out.println("Email: "+ accounts[b].email);
+			System.out.println("Fullname: "+ accounts[b].fullName);
+			System.out.println("Phong ban: "+ accounts[b].department.departmentName);
+			System.out.println("\n");
+			b++;
+		}
+		
+		
+		//
+		System.out.println("\n");
+		System.out.println("Question 16.2");
+		
+		int c = 0;
+		while(c<departments.length) {
+			System.out.println("thong tin department thu " +( c +1));
+			System.out.println("id:  "+ departments[c].departmentId);
+			System.out.println("ten phong ban: "+ departments[c].departmentName);
+			System.out.println("\n");
+			c++;
+		}
+		
+		//
+		System.out.println("\n");
+		System.out.println("Question 16.3");
+		int d=0;
+		while(d<2) {
+			System.out.println("thong tin account thu " +( d +1));
+			System.out.println("Email: "+ accounts[d].email);
+			System.out.println("Fullname: "+ accounts[d].fullName);
+			System.out.println("Phong ban: "+ accounts[d].department.departmentName);
+			System.out.println("\n");
+			d++;
+		}
+		
+		//
+//		System.out.println("\n");
+//		System.out.println("Question 16.4");
+//		
+//		int e=0;
+//		while(e<accounts.length) {
+//			if(accounts[e].accountId == 2 ) {continue;}
+//			System.out.println("thong tin account thu " +( e +1));
+//			System.out.println("Email: "+ accounts[e].email);
+//			System.out.println("Fullname: "+ accounts[e].fullName);
+//			System.out.println("Phong ban: "+ accounts[e].department.departmentName);
+//			e++;
+//			break;
+//		}	
+//		
+		
+		//
+//		System.out.println("\n");
+//		System.out.println("Question 16.5");
+//		int m=0;
+//		for(m< accounts.length) {
+//			if(accounts[m].accountId >= 4 ) {break;}
+//			System.out.println("thong tin account thu " +(m +1));
+//			System.out.println("Email: "+ accounts[m].email);
+//			System.out.println("Fullname: "+ accounts[m].fullName);
+//			System.out.println("Phong ban: "+ accounts[m].department.departmentName);
+//			System.out.println("\n");
+//			m++;
+//		}
+//		
+		
+//		Question 16.6		
+		int k=0;
+		while(k<=20) {
+			if(k%2==0) {
+				System.out.println(k);
+			}
+			k++;
+		}
+		
+		
+		
+		
 	}
 
 }
