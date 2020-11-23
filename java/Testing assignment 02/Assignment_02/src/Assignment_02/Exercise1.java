@@ -51,6 +51,8 @@ public class Exercise1 {
 		account01.createDate = LocalDate.now();
 		
 		
+		
+		
 		account account02 = new account();
 		account02.accountId = 2;
 		account02.email = "02@gmail.com";
@@ -105,6 +107,8 @@ public class Exercise1 {
 		group[] groupOfAccount01 = {group01, group02, group03};
 		account01.groups = groupOfAccount01;
 		
+//		System.out.println(account01.toString());
+		
 		group[] groupOfAccount02 = {group01, group03};
 		account02.groups = groupOfAccount02;
 		
@@ -119,7 +123,8 @@ public class Exercise1 {
 		text "Nhân viên này chưa có phòng ban"
 		Nếu không thì sẽ in ra text "Phòng ban của nhân viên này là
 		..." */
-		
+		System.out.println("\n");
+		System.out.println("question 1");
 		if(account02.department == null) {
 			System.out.println("Nhan vien nay chua co phong ban");
 		}else {
@@ -137,6 +142,8 @@ public class Exercise1 {
 		Nếu có mặt trong 4 group trở lên thì sẽ in ra text "Nhân viên
 		này là người hóng chuyện, tham gia tất cả các group" */
 		
+		System.out.println("\n");
+		System.out.println("question 2");
 		
 		if(account02.groups.length == 0) {
 			System.out.println("Nhan vien nay chua co phong ban");
@@ -151,6 +158,9 @@ public class Exercise1 {
 		
 		
 //		Question 3: Sử dụng toán tử ternary để làm Question 1
+		System.out.println("\n");
+		System.out.println("question 3");
+		
 		System.out.println((account02.department == null)? "Nhan vien nay chua co phong ban" 
 				: "Phong ban cua nhan vien nay la:" + account02.department.departmentName );
 
@@ -160,6 +170,9 @@ public class Exercise1 {
 			Nếu Position = Dev thì in ra text "Đây là Developer"
 			Nếu không phải thì in ra text "Người này không phải là
 			Developer" */
+		
+		System.out.println("\n");
+		System.out.println("question 4");
 		
 		System.out.println((account02.position.positionName == PositionName.DEV)?
 				"Đây là Developer" : "Người này không phải là Developer" );
@@ -173,6 +186,9 @@ public class Exercise1 {
 			Nếu số lượng account = 2 thì in ra "Nhóm có hai thành viên"
 			Nếu số lượng account = 3 thì in ra "Nhóm có ba thành viên"
 			Còn lại in ra "Nhóm có nhiều thành viên" */
+		
+		System.out.println("\n");
+		System.out.println("question 5");
 		
 		int x = group01.accounts.length;
 		switch(x){
@@ -190,7 +206,8 @@ public class Exercise1 {
 		}
 		
 //		Question 6: Sử dụng switch case để làm lại Question 2
-		
+		System.out.println("\n");
+		System.out.println("Question 6");
 		int y = account02.groups.length;
 		switch (y) {
 		case 0 :
@@ -210,6 +227,8 @@ public class Exercise1 {
 		}
 		
 //		Question 7: Sử dụng switch case để làm lại Question 4	
+		System.out.println("\n");
+		System.out.println("Question 7");
 		switch(account02.position.positionName) {
 		case DEV:
 			System.out.println("Đây là Developer");
@@ -221,6 +240,8 @@ public class Exercise1 {
 		
 //		FOREACH
 //		Question 8: in ra thông tin các account bao gồm: Email, FullName và tên	phòng ban của họ
+		System.out.println("\n");
+		System.out.println("Question 8");
 		account[] accounts= {account01, account02, account03};
 		int z=1;
 		for(account account1:accounts) {
@@ -234,6 +255,10 @@ public class Exercise1 {
 	
 	
 //		Question 9: in ra thông tin các phòng ban bao gồm: id và name
+		
+		System.out.println("\n");
+		System.out.println("question 9");
+		
 		department[] departments= {department01, department02, department03};
 		int t=1;
 		for(department department1:departments) {
@@ -285,13 +310,19 @@ public class Exercise1 {
 		System.out.println("Question 13");
 		
 		for(int a=0;a<accounts.length ;a ++) {
-			if(accounts[a].accountId == 2 ) {continue;}
+			if(a == 1 ) {continue;}
 			System.out.println("thong tin account thu " +( a +1));
 			System.out.println("Email: "+ accounts[a].email);
 			System.out.println("Fullname: "+ accounts[a].fullName);
 			System.out.println("Phong ban: "+ accounts[a].department.departmentName);
 			System.out.println("\n");
-		}		
+		}	
+// cach 2		
+//		for(int i=0;i<accounts.length;i++) {
+//			if(i == 1 ) {
+//				continue;};
+//			System.out.println(accounts[i].toString());
+//		}
 			
 //		Question 14
 		System.out.println("\n");
@@ -303,10 +334,17 @@ public class Exercise1 {
 			System.out.println("Email: "+ accounts[a].email);
 			System.out.println("Fullname: "+ accounts[a].fullName);
 			System.out.println("Phong ban: "+ accounts[a].department.departmentName);
-			System.out.println("\n");
+
 		}	
+// cach 2		
+		for(int i=0;i<accounts.length;i++) {
+			if(accounts[i].accountId >= 4 ) {break;}
+			System.out.println(accounts[i].toString());
+		}
 		
 //		Question 15: in ra các số chẵn nhỏ hơn hoặc bằng 20
+		System.out.println("\n");
+		System.out.println("Question 15");
 		for(int i =0; i<=20; i++) {
 			if(i%2==0) {
 				System.out.println(i);
@@ -358,20 +396,20 @@ public class Exercise1 {
 		}
 		
 		//
-//		System.out.println("\n");
-//		System.out.println("Question 16.4");
-//		
-//		int e=0;
-//		while(e<accounts.length) {
-//			if(accounts[e].accountId == 2 ) {continue;}
-//			System.out.println("thong tin account thu " +( e +1));
-//			System.out.println("Email: "+ accounts[e].email);
-//			System.out.println("Fullname: "+ accounts[e].fullName);
-//			System.out.println("Phong ban: "+ accounts[e].department.departmentName);
-//			e++;
-//			break;
-//		}	
-//		
+		System.out.println("\n");
+		System.out.println("Question 16.4");
+		
+		int e=0;
+		while(e<accounts.length) {
+			if(e==1 ) {continue;}
+			System.out.println("thong tin account thu " +( e +1));
+			System.out.println("Email: "+ accounts[e].email);
+			System.out.println("Fullname: "+ accounts[e].fullName);
+			System.out.println("Phong ban: "+ accounts[e].department.departmentName);
+			e++;
+			break;
+		}	
+		
 		
 		//
 //		System.out.println("\n");
@@ -386,7 +424,7 @@ public class Exercise1 {
 //			System.out.println("\n");
 //			m++;
 //		}
-//		
+		
 		
 //		Question 16.6		
 		int k=0;
