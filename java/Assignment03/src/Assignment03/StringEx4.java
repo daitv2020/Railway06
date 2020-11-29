@@ -13,14 +13,18 @@ public class StringEx4 {
 //		question3(); 
 //		question4();
 //		question5();
-		question6();
-		
+//		question6();
+//		question13();
+		question14();
 		
 		
 
 
 		
 	}
+
+
+
 
 
 
@@ -175,15 +179,68 @@ public class StringEx4 {
 					System.out.println("Ten la: " + fullname1[i]);
 				}
 			}
+				
+		}
+
+// Question13
+//		Kiểm tra một chuỗi có chứa chữ số hay không, nếu có in ra false ngược
+//		lại true.
+//		Ví dụ:
+//		"abc" => true
+//		"1abc", "abc1", "123", "a1bc", null => false
+		
+		private static void question13() {
+			// TODO Auto-generated method stub
 			
+			String chuoi = "123dd33";
+			boolean tam = false;
 			
-			
+			for (int i=0; i< chuoi.length(); i++) {
+				if(chuoi.charAt(i) >=0 && chuoi.charAt(i)<=9) {
+					tam = true;
+					break;
+			}
+		}
+				
+			if (tam = true){
+					System.out.println("chuoi 123dd33 có chứa chữ số");
+				}else {
+					System.out.println("chuoi 123dd33 không chứa chữ số");
+				}
 			
 			
 		}
 
+	// Question14:
+//		Cho một chuỗi str, chuyển các ký tự được chỉ định sang một ký tự khác
+//		cho trước.
+//		Ví dụ:
+//		"VTI Academy" chuyển ký tự 'e' sang '*' kết quả " VTI Acad*my"
+		
+		
+		private static void question14() {
+			// TODO Auto-generated method stub
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("Mời bạn nhâp một chuỗi");
+			String chuoi1 = scanner.nextLine();
+			System.out.println("Nhạp chữ muốn thay thế");
+			String x = scanner.nextLine();
+			System.out.println("Nhập chữ muốn đổi lại");
+			String y = scanner.nextLine();
+			
+			String chuoi2 = chuoi1.replaceAll(x,y);
+			System.out.println("Chuoi sau khi doi là: " + chuoi2);
+			
+		}
 
 		
+		
+		
+		
+		
+		
+		
+
 		
 	}
 

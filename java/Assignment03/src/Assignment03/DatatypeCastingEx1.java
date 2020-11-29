@@ -87,11 +87,21 @@ public class DatatypeCastingEx1 {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Mời bạn nhập vào số nguyên a: ");
 		int a = scanner.nextInt();
-		System.out.println("Mời bạn nhập vào số nguyên b: ");
-		int b = scanner.nextInt();
+		int b;
+		
+		while (true){
+			System.out.println("Mời bạn nhập vào số nguyên b: ");
+			b = scanner.nextInt();			
+			if(b==0) {
+				System.out.println("vui lòng nhập lại số b");
+				continue;
+		}else {
+			break;
+		}
+		}	
 		System.out.print("Thương của a/b =   ");
 		System.out.println((float)a/(float)b);
-	
+		
 	}
 	
 	

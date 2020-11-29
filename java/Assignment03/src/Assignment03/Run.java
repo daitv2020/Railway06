@@ -108,10 +108,10 @@ public class Run {
 //		System.out.println(a+b);
 //	}
 	
-		int c=0;
-		c = tinhtong2(12,13);
-		System.out.println(c);
-	}
+//		int c=0;
+//		c = tinhtong2(12,13);
+//		System.out.println(c);
+//	}
 //	private static void phuongthuc1() {
 //		// TODO Auto-generated method stub
 //		System.out.println(1111);
@@ -120,10 +120,24 @@ public class Run {
 		
 //	}	
 	
-		private static int tinhtong2(int a, int b) {
-			// TODO Auto-generated method stub
-			return a+b;
-		}
+//		private static int tinhtong2(int a, int b) {
+//			// TODO Auto-generated method stub
+//			return a+b;
+//		}
+		
+		
+		
+
+	
+		
+		
+		
+		
+		
+	}
+	
+
+		
 }
 
 
