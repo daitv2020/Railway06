@@ -6,12 +6,12 @@ import java.util.Arrays;
 public class account {
 	public	int accountId;
 	private	String email;
-	public	String userName;
+	private	String userName;
 	private	String fullName;
-	LocalDate createDate;
-	department department;
-	position position;
-	group[] groups;
+	private LocalDate createDate;
+	private department department;
+	private position position;
+	private group[] groups;
 	
 	// tạo constructor không có parameter
 	public account() {
@@ -64,14 +64,32 @@ public class account {
 				+ ", groups=" + Arrays.toString(groups) + "]";
 	}
 
+
 	
 	// tạo getter and setter
+
+	public int getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(int accountId) {
+		this.accountId = accountId;
+	}
+
 	public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getFullName() {
@@ -82,6 +100,37 @@ public class account {
 		this.fullName = fullName;
 	}
 
+	public LocalDate getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(LocalDate createDate) {
+		this.createDate = createDate;
+	}
+
+	public department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(department department) {
+		this.department = department;
+	}
+
+	public position getPosition() {
+		return position;
+	}
+
+	public void setPosition(position position) {
+		this.position = position;
+	}
+
+	public group[] getGroups() {
+		return groups;
+	}
+
+	public void setGroups(group[] groups) {
+		this.groups = groups;
+	}
 
 	
 	

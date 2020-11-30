@@ -1,4 +1,4 @@
-package com.vti.entity.Encapsulation.Ex4;
+package com.vti.entity.Inheritance.Ex5.Q1_2;
 
 public class Student {
 	private int id;

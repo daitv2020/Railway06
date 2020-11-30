@@ -7,6 +7,11 @@ public class Engineer extends CanBo {
 			super();
 			// TODO Auto-generated constructor stub
 		}
+
+		public Engineer(String fullname, byte age, Gender gioitinh, String address, String nganhdaotao) {
+			super(fullname, age, gioitinh, address);
+			this.nganhdaotao = nganhdaotao;
+		}
 		
 		
 }

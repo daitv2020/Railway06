@@ -2,7 +2,7 @@ package com.vti.entity.Encapsulation.Ex4;
 
 public class Circle {
 	
-	private final double PI = 3.14;
+	private final double PI = 3.14; 
 	
 	private	double	radius;
 	private	String color;
@@ -41,7 +41,7 @@ public class Circle {
 
 
 	public double getArea() {
-		return PI* Math.pow(radius, 2.0);
+		return PI* Math.pow(radius, 2.0); // return 3.2; cung dc
 	}
 
 
