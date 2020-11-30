@@ -14,15 +14,19 @@ public class StringEx4 {
 //		question4();
 //		question5();
 //		question6();
+//		question7();
+//		question8();
+//		question9();
+		question12();
 //		question13();
-		question14();
+//		question14();
+//		question15();
 		
 		
 
 
 		
 	}
-
 
 
 
@@ -181,6 +185,113 @@ public class StringEx4 {
 			}
 				
 		}
+		
+// Question 7
+//		Viết chương trình yêu cầu người dùng nhập vào họ và tên đầy đủ và
+//		chuẩn hóa họ và tên của họ như sau:
+//
+//		3
+//
+//		a) Xóa dấu cách ở đầu và cuối và giữa của chuỗi người dùng nhập
+//		vào
+//		VD: Nếu người dùng nhập vào " nguyễn văn nam " thì sẽ
+//		chuẩn hóa thành "nguyễn văn nam"
+//		b) Viết hoa chữ cái mỗi từ của người dùng
+//		VD: Nếu người dùng nhập vào " nguyễn văn nam " thì sẽ
+//		chuẩn hóa thành "Nguyễn Văn Nam"
+		
+		private static void question7() {
+			// TODO Auto-generated method stub
+			
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("Moi ban nhap ho va ten: ");
+			String x = scanner.nextLine();
+			x = x.trim();
+			System.out.println(x);
+			x = x.replaceAll("\\s+", " ");
+			System.out.println(x);
+			String[] y = x.split(" ");
+			for(int i = 0; i<y.length ; i++) {
+				y[i] = y[i].substring(0,1).toUpperCase() + y[i].substring(1);
+			System.out.print(y[i] + " ");
+			}
+			
+		}
+		
+//		Question 8:	In ra tất cả các group có chứa chữ "Java"	
+
+		private static void question8() {
+			// TODO Auto-generated method stub
+			
+			group group1 = new group();
+			group1.groupName = "Java1";
+			group group2 = new group();
+			group2.groupName = "Test";
+			group group3 = new group();
+			group3.groupName = "Java";
+			group[] groups = {group1, group2,group3};
+			
+			for(int i =0; i<groups.length; i++) {
+				if(groups[i].groupName.contains("Java")) {
+					System.out.println(groups[i]);
+				}
+			}
+			
+			
+			
+		}
+	
+		
+		
+		
+		
+
+// Question 9:	In ra tất cả các group "Java"
+		
+		private static void question9() {
+			// TODO Auto-generated method stub
+			group group1 = new group();
+			group1.groupName = "Java";
+			group group2 = new group();
+			group2.groupName = "Test";
+			group group3 = new group();
+			group3.groupName = "Java";
+			group[] groups = {group1, group2,group3};
+			
+			for(int i=0; i<groups.length; i++) {
+				if(groups[i].groupName.equals("Java")) {
+					System.out.println(groups[i]);
+				}
+			}
+		
+		}
+
+//		Question 12: Reverse String	Đảo ngược chuỗi sử dụng vòng lặp
+
+		private static void question12() {
+			// TODO Auto-generated method stub
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("Moi ban nhap vao mot chuoi");
+			String chuoi = scanner.nextLine();
+			scanner.close();
+			chuoi = chuoi.trim();
+			chuoi = chuoi.replaceAll("\\s+", "");
+			String[] chuois = chuoi.split("");
+			for(int i= chuois.length - 1 ;i>=0; i--) {
+				System.out.print(chuois[i] + "");
+			}
+		
+		}
+
+			
+			
+			
+		
+	
+		
+		
+		
+		
 
 // Question13
 //		Kiểm tra một chuỗi có chứa chữ số hay không, nếu có in ra false ngược
@@ -232,8 +343,29 @@ public class StringEx4 {
 			System.out.println("Chuoi sau khi doi là: " + chuoi2);
 			
 		}
+//		Question 15: Revert string by word
+//		Đảo ngược các ký tự của chuỗi cách nhau bởi dấu cách mà không dùng
+//		thư viện.
+//		Ví dụ: " I am developer " => "developer am I".
+//		Các ký tự bên trong chỉ cách nhau đúng một dấu khoảng cách.
+//		Gợi ý: Các bạn cần loại bỏ dấu cách ở đầu và cuối câu, thao tác cắt
+//		chuỗi theo dấu cách
 
+		private static void question15() {
+			// TODO Auto-generated method stub
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("Moi ban nhap vao mot chuoi");
+			String chuoi = scanner.nextLine();
+			scanner.close();
+			chuoi = chuoi.trim();
+			chuoi = chuoi.replaceAll("\\s+", " ");
+			String[] chuois = chuoi.split(" ");
+			for(int i= chuois.length - 1 ;i>=0; i--) {
+				System.out.print(chuois[i] + " ");
+			}
 		
+		}
+
 		
 		
 		
