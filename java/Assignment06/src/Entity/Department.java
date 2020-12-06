@@ -12,7 +12,8 @@ public class Department {
 //	Scanner scanner = new Scanner(System.in);
 	
 	public Department() {
-		input();
+		id = inputId();
+		name = inputName();
 	}
 
 
@@ -23,14 +24,16 @@ public class Department {
 	}
 
 
-	public void input() {
+	public byte inputId() {
 		System.out.println("Vui long nhap id");
 //		this.id = scanner.nextByte();
-		this.id = (byte) sc.inputInt("Vui long nhap lai id");
-		
+		return this.id = (byte) sc.inputInt("Vui long nhap lai id");
+
+	}
+	public String inputName() {
 		System.out.println("Vui long nhap ten phong ban");
 //		this.name = scanner.nextLine();
-		this.name = sc.inputString("Vui long nhap lai ten phong ban");
+		return this.name = sc.inputString("Vui long nhap lai ten phong ban");
 	}
 
 

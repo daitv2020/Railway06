@@ -1,6 +1,7 @@
 package Entity;
 
 import java.time.LocalDate;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -16,41 +17,28 @@ public class Account {
 	LocalDate createDate;
 	int age;
 	Group[] groups;
-
-	static ScannerUtils sc = new ScannerUtils();
-
-	public Account() {
+	
+	ScannerUtils sc = new ScannerUtils();
+	
+	public Account() throws InvalidAgeInputingException {
 		input();
-		try {
-			inputAge();
-		} catch (InvalidAgeInputingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		try {
-			inputAccountAge();
-		} catch (InvalidAgeInputingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		inputAccountAge();
 	}
 	public void input() {
-		Scanner scanner = new Scanner(System.in);
+
 		System.out.println("Nhap id");
 		id = sc.inputInt("Vui long nhap lại id");
-		scanner.nextLine();
 		System.out.println("Nhap email");
 		email = sc.inputString("Vui long nhap lai email");
 		System.out.println("Vui long nhap username");
 		userName = sc.inputString("Vui long nhap lai userName");
-		System.out.println("Vui long nhap so tuoi");
-		age = sc.inputInt("Vui long nhap lai tuoi");
+
 
 	}
 
-	public static int inputAge() throws InvalidAgeInputingException {
+	public int inputAge() throws InvalidAgeInputingException {
 		while (true) {
-
+			System.out.println("Vui long nhap so tuoi");
 			int age = sc.inputInt("Vui long nhap lai tuoi");
 			if (age <= 0) {
 				throw new InvalidAgeInputingException("The age must	be greater than 0, input again");
@@ -61,7 +49,7 @@ public class Account {
 		}
 	}
 
-	public static int inputAccountAge() throws InvalidAgeInputingException {
+	public int inputAccountAge() throws InvalidAgeInputingException {
 		while(true) {
 			try {
 				int age = inputAge();

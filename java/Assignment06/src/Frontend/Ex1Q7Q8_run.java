@@ -8,10 +8,10 @@ public class Ex1Q7Q8_run {
 		// TODO Auto-generated method stub
 
 		Ex1Q7Q8 run = new Ex1Q7Q8();
-//		run.q7();
+		run.q7();
 //		run.q8Float();
 //		run.q8Double();
-		run.q8String();
+//		run.q8String();
 		
 		
 	}
