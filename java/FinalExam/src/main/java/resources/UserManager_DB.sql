@@ -46,13 +46,3 @@ VALUES      		(1, N'Nguyen Thị Mỵ', 'mynt24@gmail.com',  'Mynguyen123', 'Emp
                     (5, N'Nguyen Thị Chan', 'mynt@gmail.com',  'Mynguyen123', 'Manager', 2, 2, 'sql'),
                     (6, N'Nguyen Thị Le', 'mynt2@gmail.com',  'Mynguyen123', 'Employee', 1, 5, 'java'),
                     (7, N'Nguyen Thị Lan', 'mynt2427@gmail.com',  'Mynguyen123', 'Employee', 1, 1, 'java' );
-					                                                                                                                    
- SELECT * FROM User WHERE `Role` = 'Manager';
- SELECT * FROM User WHERE ProjectId = 2;
-                    
-                    
-                    
-                    
-                    
-                    
-                    
