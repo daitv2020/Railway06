@@ -38,8 +38,7 @@ public class Project {
 	}
 	@Override
 	public String toString() {
-		return "Project [projectId=" + projectId + ", teamSize=" + teamSize + ", idManager=" + idManager
-				+ ", idEmployees=" + idEmployees + "]";
+		return "Project [projectId=" + projectId +"]";
 	}
 	
 }

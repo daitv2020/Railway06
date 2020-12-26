@@ -12,10 +12,10 @@ public class Demo {
 		// TODO Auto-generated method stub
 
 		UserRepository ur = new UserRepository();
-//		ur.showUsersByProjectId(2);
+//		ur.showUsersByProjectId(3);
 //		ur.showAllManager();
-		ur.showAllUsers();
-		ur.login();
+//		ur.showAllUsers();
+//		ur.login();
 		
 	}
 

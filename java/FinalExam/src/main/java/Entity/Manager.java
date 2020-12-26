@@ -23,7 +23,7 @@ public class Manager extends User {
 
 	@Override
 	public String toString() {
-		return "Manager [ExpInYear=" + ExpInYear + ", toString()=" + super.toString() + "]";
+		return "Manager [ExpInYear=" + ExpInYear + super.toString() + "]";
 	}
 
 }

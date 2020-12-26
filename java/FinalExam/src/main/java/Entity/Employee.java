@@ -33,7 +33,7 @@ public class Employee extends User {
 
 	@Override
 	public String toString() {
-		return "Employee [ "+ "proSkill=" + proSkill + ", toString()=" + super.toString() + "]";
+		return "Employee [ "+ "proSkill=" + proSkill  + super.toString() + "]";
 	}
 
 }

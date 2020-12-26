@@ -54,7 +54,7 @@ public class User extends Project {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", fullname=" + fullname + ", email=" + email + ", password=" + password
-				+ ", toString()=" + super.toString() + "]";
+				 + super.toString() + "]";
 	}
 
 }
