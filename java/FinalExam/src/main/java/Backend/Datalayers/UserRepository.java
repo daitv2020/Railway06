@@ -25,7 +25,7 @@ public class UserRepository {
 	}
 
 	public static ArrayList<User> users = new ArrayList<User>();
-
+	
 	public static void showUsersByProjectId(int projectId) throws SQLException {
 		users = new ArrayList<User>();
 		Statement statement = connection.createStatement();
@@ -93,7 +93,7 @@ public class UserRepository {
 				checkpass = true;
 			}
 		}
-		if (password.length() >= 6 && password.length() <= 12) {
+		if (password.length() >= 6 && password.length() <= 12 && checkpass) {
 			return true;
 		} else {
 			return false;
