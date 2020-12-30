@@ -29,20 +29,19 @@ public class UserRepository {
 	public static void showUsersByProjectId(int projectId) throws SQLException {
 		users = new ArrayList<User>();
 		Statement statement = connection.createStatement();
-		String query = "SELECT * FROM User WHERE ProjectId = " + projectId + ";";
+		String query = "SELECT m.FullName as m_fullname,m.email as m_email, e.FullName as e_fullname, e.Email as e_email FROM `Project` p"
+				+ " JOIN Manager m ON p.IdManager = m.Id"
+				+ " JOIN Employee e ON p.IdEmployees = e.Id WHERE p.ProjectID = "+ projectId + ";";
 		ResultSet resultSet = statement.executeQuery(query);
 		while (resultSet.next()) {
-			if (resultSet.getString("Role").equals("Manager")) {
-				users.add(new Manager(resultSet.getInt("ProjectID"), resultSet.getInt("UserID"),
-						resultSet.getString("FullName"), resultSet.getString("Email"), resultSet.getInt("ExpInYear"),
-						resultSet.getString("password")));
-			} else {
-				users.add(new Employee(resultSet.getInt("ProjectID"), resultSet.getInt("UserID"),
-						resultSet.getString("FullName"), resultSet.getString("Email"), resultSet.getString("password"),
-						resultSet.getString("proSkill")));
-			}
-		}
+		users.add(new Manager( 
+						resultSet.getString("m_fullname"),
+						resultSet.getString("m_email")));
+		users.add(new Employee(
+				resultSet.getString("e_fullname"),
+				resultSet.getString("e_email")));
 
+		}
 		for (User user : users) {
 			if (user instanceof User) {
 				System.out.println(user);
@@ -53,20 +52,21 @@ public class UserRepository {
 				Manager manager = (Manager) user;
 				System.out.println(manager.toString());
 			}
-
 		}
-
 	}
 
 	public static void showAllManager() throws SQLException {
 		users = new ArrayList<User>();
 		Statement statement = connection.createStatement();
-		String query = "SELECT * FROM User WHERE `Role` = 'Manager';";
+		String query = "SELECT m.FullName as m_fullname,m.email as m_email, m.ExpInYear as m_ExpInYear, m.Id as m_id FROM `Project` p" + 
+				"	 JOIN Manager m ON p.IdManager = m.Id";
 		ResultSet resultSet = statement.executeQuery(query);
 		while (resultSet.next()) {
-			users.add(new Manager(resultSet.getInt("ProjectID"), resultSet.getInt("UserID"),
-					resultSet.getString("FullName"), resultSet.getString("Email"), resultSet.getInt("ExpInYear"),
-					resultSet.getString("password")));
+			users.add(new Manager( 
+					resultSet.getInt("m_id"),			
+					resultSet.getString("m_fullname"),
+					resultSet.getString("m_email"),
+					resultSet.getInt("m_ExpInYear")));
 		}
 		for (User us : users)
 			System.out.println(us);
@@ -103,20 +103,24 @@ public class UserRepository {
 	public static void showAllUsers() throws SQLException {
 		users = new ArrayList<User>();
 		Statement statement = connection.createStatement();
-		String querry = "SELECT * FROM User";
-		ResultSet resultSet = statement.executeQuery(querry);
+		String query = "SELECT m.Id as m_id, m.FullName as m_fullname,m.email as m_email, m.Password as m_pass, m.ExpInYear as m_ExpInYear, e.Id as e_id, e.FullName as e_fullname, e.Email as e_email, e.Password as e_pass FROM `Project` p"
+				+ " JOIN Manager m ON p.IdManager = m.Id"
+				+ " JOIN Employee e ON p.IdEmployees = e.Id";
+		ResultSet resultSet = statement.executeQuery(query);
 		while (resultSet.next()) {
-			if (resultSet.getString("Role").equals("Manager")) {
-				users.add(new Manager(resultSet.getInt("ProjectID"), resultSet.getInt("UserID"),
-						resultSet.getString("FullName"), resultSet.getString("Email"), resultSet.getInt("ExpInYear"),
-						resultSet.getString("password")));
-			} else {
-				users.add(new Employee(resultSet.getInt("ProjectID"), resultSet.getInt("UserID"),
-						resultSet.getString("FullName"), resultSet.getString("Email"), resultSet.getString("password"),
-						resultSet.getString("proSkill")));
-			}
-		}
+		users.add(new Manager( 
+				resultSet.getInt("m_id"),
+				resultSet.getString("m_fullname"),
+				resultSet.getString("m_email"),
+				resultSet.getString("m_pass"),
+				resultSet.getInt("m_ExpInYear")));
+		users.add(new Employee(
+				resultSet.getInt("e_id"),
+				resultSet.getString("e_fullname"),
+				resultSet.getString("e_email"),
+				resultSet.getString("e_pass")));
 
+		}
 		for (User user : users) {
 			if (user instanceof User) {
 				System.out.println(user);
@@ -127,11 +131,8 @@ public class UserRepository {
 				Manager manager = (Manager) user;
 				System.out.println(manager.toString());
 			}
-
 		}
-
 	}
-
 	public static void login() throws SQLException {
 		while (true) {
 			Scanner scanner = new Scanner(System.in);

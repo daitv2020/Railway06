@@ -4,15 +4,17 @@ public class Employee extends User {
 
 	private int projectId;
 	private String proSkill;
-
-	public Employee(int projectId, int id, String fullname, String email,
-			String password, String proSkill) {
-		super(projectId, id, fullname, email, password);
+	
+	public Employee(int id, String fullname, String email, String password, int projectId, String proSkill) {
+		super(id, fullname, email, password);
+		this.projectId = projectId;
 		this.proSkill = proSkill;
 	}
-
-	public Employee() {
-		super();
+	public Employee(String fullname, String email) {
+		super(fullname, email);
+	}
+	public Employee(int id, String fullname, String email, String password) {
+		super(id, fullname, email, password);
 	}
 
 	public int getProjectId() {
@@ -33,7 +35,8 @@ public class Employee extends User {
 
 	@Override
 	public String toString() {
-		return "Employee [ "+ "proSkill=" + proSkill  + super.toString() + "]";
+		return "Employee [projectId=" + projectId + ", proSkill=" + proSkill + ", toString()=" + super.toString() + "]";
 	}
 
+	
 }
