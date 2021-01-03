@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+
+<body>
+    <h2>Register</h2>
+    <p><i>Please <b>fill in this form</b> to create an account</i></p>
+    <form>
+        <label>Full name:
+            <label style="color: red;"> * </label>
+        </label><br>
+        <input type="text" name="fullname" placeholder="input your fullname"> <br>
+        <label>UserName:
+            <label style="color: red;"> * </label>
+        </label><br>
+        <input type="text" name="username" placeholder="input your username"><br>
+        <label>Password:
+            <label style="color: red;"> * </label>
+        </label> <br>
+        <input type="text" name="password" placeholder="input your password"><br>
+        <label>Email:
+            <label style="color: red;"> * </label>
+        </label> <br>
+        <input type="text" name="email" placeholder="input your email"> <br>
+        <label>Telephone Number:
+            <label style="color: red;"> * </label>
+        </label> <br>
+        <input type="text" name="telephone number" placeholder="input your telephone number"><br>
+        <br>
+        <label>Input Object:</label> <br>
+        <input type="radio" name="person" value="Student"> Student
+        <input type="radio" name="person" value="Teacher"> Teacher <br><br>
+        <label>Favorite: </label> <br>
+        <input type="radio" name="Favorite" value="Badminton"> Badminton
+        <input type="radio" name="Favorite" value="Volleyball"> Volleyball
+        <input type="radio" name="Favorite" value="Football"> Football <br>
+        <br>
+
+        <form action="">
+            <label>Address
+                <label style="color: red;"> * </label>
+            </label><br>
+            <select name="Tinh">
+                <option value="Bac Giang">Bac Giang</option>
+                <option value="Ha Noi">Ha Noi</option>
+                <option value="Bac Ninh">Bac Ninh</option>
+                <option value="Quang Ninh">Quang Ninh</option>
+                <option value="TP HCM">TP HCM</option>
+            </select>
+        </form>
+        <br>
+        <form action="">
+            <label>BirthDay
+            <label style="color: red;">*</label><br>
+            </label>
+            <input type="date" name="BirthDay">
+        </form>
+        <br>
+        <form action="">
+            <label> Your Picture
+            <label style="color: red;">*</label><br>
+            </label>
+            <input type="file" name="picture" value="Choose file">
+            <br>
+            <br>
+            <form action="">
+                <input type="submit" value="Đăng Ký">
+            </form>
+        </form>
+</body>
+
+</html>

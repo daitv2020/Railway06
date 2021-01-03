@@ -1,0 +1,26 @@
+.a {
+    text-align: center;
+    font-family: 'Times New Roman';
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.mg {
+    font-family: 'Times New Roman';
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.relative {
+    position: relative;
+    left: 30px;
+    border: 1px solid blueviolet;
+}
+
+.table {
+    margin-left: 25%;
+    color: green;
+    background-color: greenyellow;
+    text-align: left;
+    width: 50%;
+}
