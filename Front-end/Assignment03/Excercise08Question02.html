@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Hình chữ nhật</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+
+<body>
+    <table border="1px" cellspacing="0">
+        <tr>
+            <th>Chiều dài</th>
+            <td>
+                <input type="number" id="chieudai">
+            </td>
+        </tr>
+        <tr>
+            <th>Chiều rộng</th>
+            <td>
+                <input type="number" id="chieurong">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                <button onclick="tinhtoan()">Tính toán</button>
+            </td>
+        </tr>
+        <tr>
+            <th>Chu vi là:</th>
+            <td>
+                <span id="chuvi"></span>
+            </td>
+        </tr>
+        <tr>
+            <th>Diện tích là: </th>
+            <td>
+                <span id="dientich"></span>
+            </td>
+        </tr>
+
+    </table>
+    <script>
+        function tinhtoan() {
+            var dai = document.getElementById("chieudai").value;
+            var rong = document.getElementById("chieurong").value;
+            dai = parseFloat(dai);
+            rong = parseFloat(rong);
+            console.log(dai);
+            console.log(rong);
+            document.getElementById("chuvi").innerHTML = (dai + rong) * 2;
+            document.getElementById("dientich").innerHTML = dai * rong;
+        }
+    </script>
+</body>
+
+</html>

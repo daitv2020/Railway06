@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Phương trình bậc 2</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script> -->
+</head>
+
+<body>
+    <table border="1px" cellspacing="0">
+        <tr>
+            <th>Nhập a</th>
+            <td>
+                <input type="number" id="a1">
+            </td>
+        </tr>
+        <tr>
+            <th>Nhập b</th>
+            <td>
+                <input type="number" id="b1">
+            </td>
+        </tr>
+        <tr>
+            <th>Nhập c</th>
+            <td>
+                <input type="number" id="c1">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                <button onclick="giaiphuongtrinh()">Giải phương trình</button>
+            </td>
+        </tr>
+        <tr>
+            <th>Kết quả: </th>
+            <td><span id="ketqua"></span></td>
+        </tr>
+    </table>
+    <script>
+        function giaiphuongtrinh() {
+            var a = document.getElementById("a1").value;
+            var b = document.getElementById("b1").value;
+            var c = document.getElementById("c1").value;
+            delta = (b * b) - (4 * a * c);
+            if (delta < 0) {
+                document.getElementById("ketqua").innerHTML = "Vo nghiem";
+            } else if (delta = 0) {
+                document.getElementById("ketqua").innerHTML = "x1 = x2 = " + (-b / (2 * a));
+            } else {
+                document.getElementById("ketqua").innerHTML = "x1 = " + (-b + Math.sqrt(delta)) / (2 * a) + " ; x2 = " + (-b - Math.sqrt(delta)) / (2 * a);
+            }
+        }
+    </script>
+</body>
+
+</html>

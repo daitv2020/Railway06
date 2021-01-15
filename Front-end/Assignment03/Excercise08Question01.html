@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Caculator</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+
+<body>
+    <table border="1" cellspacing="0px">
+        <tr>
+            <td>Number 1</td>
+            <td><input type="number" id="number1"></td>
+        </tr>
+        <tr>
+            <td>Number 2</td>
+            <td><input type="number" id="number2"></td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="tong()">Cộng</button>
+                <button onclick="tich()">Nhân</button>
+                <button onclick="hieu()">Trừ</button>
+                <button onclick="thuong()">Chia</button>
+                <button onclick="du()">%</button>
+            </td>
+            <td><a id="ketqua" style="font-family: 'Times New Roman';">Kết quả</a></td>
+        </tr>
+    </table>
+    <script>
+        function tong() {
+            var s1 = document.getElementById("number1").value;
+            var s2 = document.getElementById("number2").value;
+            s1 = parseFloat(s1);
+            s2 = parseFloat(s2);
+            document.getElementById("ketqua").innerHTML = "Tổng: " + (s1 + s2);
+        }
+
+        function tich() {
+            var s1 = document.getElementById("number1").value;
+            var s2 = document.getElementById("number2").value;
+            s1 = parseFloat(s1);
+            s2 = parseFloat(s2);
+            document.getElementById("ketqua").innerHTML = "Tích: " + (s1 * s2);
+        }
+
+        function hieu() {
+            var s1 = document.getElementById("number1").value;
+            var s2 = document.getElementById("number2").value;
+            s1 = parseFloat(s1);
+            s2 = parseFloat(s2);
+            document.getElementById("ketqua").innerHTML = "Hiệu: " + (s1 - s2);
+        }
+
+        function thuong() {
+            var s1 = document.getElementById("number1").value;
+            var s2 = document.getElementById("number2").value;
+            s1 = parseFloat(s1);
+            s2 = parseFloat(s2);
+            document.getElementById("ketqua").innerHTML = "Thương: " + (s1 / s2);
+        }
+
+        function du() {
+            var s1 = document.getElementById("number1").value;
+            var s2 = document.getElementById("number2").value;
+            s1 = parseFloat(s1);
+            s2 = parseFloat(s2);
+            document.getElementById("ketqua").innerHTML = "%: " + (s1 % s2);
+        }
+    </script>
+</body>
+
+</html>

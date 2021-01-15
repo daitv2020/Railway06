@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Cộng trừ nhân chia</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script> -->
+</head>
+
+<body>
+    <table border="1px" cellspacing="0">
+        <tr>
+            <th>Number 1</th>
+            <td>
+                <input type="number" id="number1">
+            </td>
+        </tr>
+        <tr>
+            <th>Number 2</th>
+            <td>
+                <input type="number" id="number2">
+            </td>
+        </tr>
+        <tr>
+            <th>Option</th>
+            <td style="text-align: center;">
+                <select id="pheptinh">
+                    <option value="add">Cộng</option> 
+                    <option value="sub">Trừ</option> 
+                    <option value="multiple">Nhân</option>   
+                    <option value="devide">Chia</option>       
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>Result</th>
+            <td><span id="result"></span></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                <button onclick="calculate()">Calculate</button>
+            </td>
+        </tr>
+    </table>
+    <script>
+        function calculate() {
+            var number1 = parseFloat(document.getElementById("number1").value);
+            var number2 = parseFloat(document.getElementById("number2").value);
+            var pheptinh = document.getElementById("pheptinh").value;
+            if (pheptinh == "add") {
+                document.getElementById("result").innerHTML = number1 + number2;
+            } else if (pheptinh == "sub") {
+                document.getElementById("result").innerHTML = number1 - number2;
+            } else if (pheptinh == "multiple") {
+                document.getElementById("result").innerHTML = number1 * number2;
+            } else {
+                document.getElementById("result").innerHTML = number1 / number2;
+            }
+        }
+    </script>
+</body>
+
+</html>

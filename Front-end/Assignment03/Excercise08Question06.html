@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Question06</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+
+<body>
+    <h3>Form khảo sát thông tin</h3>
+    <table border="1px" cellspacing="0px">
+        <tr>
+            <td>Họ tên:</td>
+            <td><input id="fullname" type="text" placeholder="fullname"></td>
+        </tr>
+        <tr>
+            <td>Số điện thoại:</td>
+            <td><input id="phone" type="text" placeholder="phone number"></td>
+        </tr>
+        <tr>
+            <td>Giới tính:</td>
+            <td>
+                <input type="radio" class="gender" name="gender" value="Nam" checked />Nam
+                <input type="radio" class="gender" name="gender" value="Nữ" />Nữ
+            </td>
+        </tr>
+        <tr>
+            <td>Sở thích:</td>
+            <td>
+                <input class="hobby" type="checkbox" name="hobby" value="Nghe nhạc">Nghe nhạc<br>
+                <input class="hobby" type="checkbox" name="hobby" value="Bóng đá">Bóng đá<br>
+                <input class="hobby" type="checkbox" name="hobby" value="Du lịch">Du lịch<br>
+                <input class="hobby" type="checkbox" name="hobby" value="Đọc sách">Đọc sách
+            </td>
+        </tr>
+    </table>
+    <button onclick="show()">Hiển thị</button>
+    <script>
+        function show() {
+            var fullname = document.getElementById("fullname").value;
+            var phonenumber = document.getElementById("phone").value;
+            var gioitinh = document.getElementsByClassName("gender");
+            var gender = "";
+            for (var i = 0; i < gioitinh.length; i++) {
+                if (gioitinh[i].checked) {
+                    gender = gioitinh[i].value;
+
+                }
+            }
+            var hobby = "";
+            var sothich = document.getElementsByClassName("hobby");
+            for (var i = 0; i < sothich.length; i++) {
+                if (sothich[i].checked) {
+                    hobby += sothich[i].value + " ";
+
+                }
+            }
+            alert(
+                "Fullname: " + fullname +
+                ", sdt: " + phonenumber +
+                ", gioi tinh: " + gender +
+                ", so thich: " + hobby);
+        }
+    </script>
+
+
+
+</body>
+
+</html>
