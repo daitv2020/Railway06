@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Ex02Q0203</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src='main.js'></script>
+</head>
+
+<body>
+    <h2>Click vao day de hoc kiem tien</h2>
+    <p>Tay làm hàm nhai, tay quai miệng trễ</p>
+    <script>
+        $(document).ready(function() {
+            $("p").hide();
+            $("h2").click(function() {
+                $("p").slideToggle()(500);
+            });
+        });
+    </script>
+</body>
+
+</html>

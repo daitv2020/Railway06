@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Ex02Q01</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src='main.js'></script>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <button>Click</button>
+
+    <div id="box1" class="box" style="background-color: red;"> </div>
+    <div id="box2" class="box" style="background-color: green;"> </div>
+    <div id="box3" class="box" style="background-color: gray;"> </div>
+
+    <script>
+        $(document).ready(function() {
+            $(".box").hide();
+            $("button").click(function() {
+                $("#box3").fadeToggle();
+                $("#box2").fadeToggle('slow');
+                $("#box1").fadeToggle(3000);
+            });
+        });
+    </script>
+</body>
+
+</html>
